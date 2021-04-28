@@ -17,12 +17,26 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="clientes")
-public class Cliente implements Serializable {
+@Table(name="Usuarios")
+public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+
+	@NotEmpty(message ="no puede estar vacio")
+	@Size(min=2, max=20, message="el tamaño tiene que estar entre 2 y 20")
+	@Column(nullable=false, unique=true)
+	private String usuario;
+
+	@NotEmpty(message ="no puede estar vacio")
+	@Size(min=2, max=20, message="el tamaño tiene que estar entre 2 y 20")
+	@Column(nullable=false, unique=true)
+	private String password;
+
+	@NotEmpty(message ="no puede estar vacio")
+	@Column(nullable=false)
+	private String rol;
 
 	@NotEmpty(message ="no puede estar vacio")
 	@Size(min=2, max=20, message="el tamaño tiene que estar entre 2 y 20")
@@ -87,4 +101,28 @@ public class Cliente implements Serializable {
 	}
 
 	private static final long serialVersionUID = 1L;
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
 }
